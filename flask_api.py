@@ -1,16 +1,15 @@
 # Import required libraries
 import joblib
+import numpy as np
 from flask import Flask, request
 import flasgger
 from flasgger import Swagger
 
 app = Flask(__name__)
-Swagger(app)
+swagger = Swagger(app)
 
-# load preprocessor pipeline and model
-
+# load model
 model = joblib.load('./model/model.pkl')
-
 
 # web page that handles user's query and displays model results
 @app.route('/')
@@ -19,8 +18,9 @@ def home():
 
 
 @app.route('/predict', methods=['Get'])
-def predict():
-    """Predicting hepatitis
+def predict_hepatitis():
+    """
+    Predicting hepatitis
     Specifies the features to make prediction under the parameters.
     ---
     parameters: 
@@ -40,35 +40,35 @@ def predict():
         in: query
         type: number
         required: true
-        - name: fatigue'
+      - name: fatigue'
         in: query
         type: number
         required: true
-        - name: malaise
+      - name: malaise
         in: query
         type: number
         required: true
-        - name: anorexia
+      - name: anorexia
         in: query
         type: number
         required: true
-        - name: liver_big
+      - name: liver_big
         in: query
         type: number
         required: true
-        - name: liver_firm'
+      - name: liver_firm'
         in: query
         type: number
         required: true
-        - name: spleen_palpable
+      - name: spleen_palpable
         in: query
         type: number
         required: true
-        - name: spiders
+      - name: spiders
         in: query
         type: number
         required: true
-        - name: ascites
+      - name: ascites
         in: query
         type: number
         required: true
@@ -76,34 +76,31 @@ def predict():
         in: query
         type: number
         required: true
-        - name: bilirubin
+      - name: bilirubin
         in: query
         type: number
         required: true
-        - name: alk_phosphate
+      - name: alk_phosphate
         in: query
         type: number
         required: true
-        - name: sgot
+      - name: sgot
         in: query
         type: number
         required: true
-        - name: albumin
+      - name: albumin
         in: query
         type: number
         required: true
-        - name: protime
+      - name: protime
         in: query
         type: number
         required: true
-        - name: histology
+      - name: histology
         in: query
         type: number
         required: true
-    responses:
-        200:
-            description: The output values 
-    """
+     """
     age = request.args.get("age")
     sex = request.args.get("sex")
     steroid = request.args.get("steroid")
@@ -112,9 +109,9 @@ def predict():
     malaise = request.args.get("malaise")
     anorexia = request.args.get("anorexia")
     liver_big = request.args.get("liver_big")
-    liver_firm=request.args.get("liver_firm")
+    liver_firm = request.args.get("liver_firm")
     spleen_palpable = request.args.get("spleen_palpable")
-    spiders=request.args.get("spiders")
+    spiders = request.args.get("spiders")
     ascites = request.args.get("ascites")
     varices=request.args.get("varices")
     bilirubin = request.args.get("bilirubin")
@@ -124,13 +121,14 @@ def predict():
     protime =request.args.get("protime")
     histology = request.args.get("histology")
     
-    prediction= model.predict([[age, sex, steroid, antivirals, 
-    fatigue, malaise, anorexia, liver_big, liver_firm, spleen_palpable,
-    spiders, ascites, varices, bilirubin, alk_phosphate, sgot, albumin,
-    protime, histology]])
-
-    print(prediction[0])
-    return "Hello The answer is"+str(prediction[0])                     
+    try:
+      prediction= model.predict(np.array[[age, sex, steroid, antivirals, 
+        fatigue, malaise, anorexia, liver_big, liver_firm, spleen_palpable,
+        spiders, ascites, varices, bilirubin, alk_phosphate, sgot, albumin,
+        protime, histology]])
+      return "The prediction is: "+str(prediction[0])
+    except:
+      return "All variable should be numeric (male: 1, female 2)"                   
 
 
 def main():
