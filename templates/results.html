@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+ <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Hepatitis Prediction</title>
+        <link rel="stylesheet" href="./static/styles.css">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        
+    </head>
+    <body>
+    <!-- Title -->
+   	<div class="container-heading">
+    <h1 class="title">Hepatitis Mortality Prediction</h1>
+    <p class='description'>A Machine learning model deployed on Heroku using Flask.</p>
+    </div>    	 	
+    
+    <!-- Results -->
+    <div class="result">
+			{% if prediction==1 %}
+				<h1>The prediction is: <span class='danger'> DIE 😭.</span></h1>
+				<img class='image' src="https://media1.giphy.com/media/kHcaX3uLU3IME/200.webp?cid=ecf05e47zzxps296v1kcxnt4k7po6sd5byezq2b00m9o5a0o&rid=200.webp" alt="Die">
+			{% elif prediction==0 %}
+				<h1>The prediction is: <span class='safe'>LIVE 😌.</span></h1>
+				<img class='image' src="https://media0.giphy.com/media/Eveu9jBCwj0U8/200w.webp?cid=ecf05e47r1w65ba2342qunfkjybj6km6937a0r41emda70uu&rid=200w.webp" alt="Live">
+			{% endif %}
+		</div>
+
+    <!-- Footer -->
+  <div class='footer'>
+      <div class="contact-details">
+          <a target="_blank" href="https://github.com/SAB-6/Hepatitis-mortality-prediction"><i class="fab fa-github contact-icon"></i></a>
+          <a target="_blank" href="https://www.linkedin.com/in/shereefbankole/"><i class="fa fa-linkedin-square contact-icon"></i></a>
+      </div>
+      <p class='footer-description'> By 💻 Shereef B.</p>  
+    </body>
+</html>

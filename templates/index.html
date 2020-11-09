@@ -4,25 +4,25 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Hepatitis Prediction</title>
+  <title>Hepatitis Mortality Prediction</title>
   <link rel="stylesheet" type="text/css" href="./static/styles.css">
   <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
   <!-- Title -->
-    	<div class="content">
-            <h1 class="title">Hepatitis Prediction</h1>
-            <div class='description'>
-    		<p>A Machine learning model deployed on Heroku.</p>
-    		</div>
+    	<div class="container-heading">
+            <h1 class="title">Hepatitis Mortality Prediction</h1>
+            <p class='description'>A Machine learning model deployed on Heroku using Flask.</p>
     	</div>
+    	
 
         <!-- Text Area -->
-    	<div class="ml_content">
+    	<div class="ml_container">
     		<form action="{{ url_for('predict') }}" method="POST">
-                <input class="form-input" type="text" name="age" placeholder=Age (Years) eg. 10"><br>
+                <input class="form-input" type="text" name="age" placeholder="Age (Years) eg. 10"><br>
                 <input class="form-input" type="text" name="sex" placeholder="Sex 1 for male, 2 for female"><br>
                 <input class="form-input" type="text" name="steroid" placeholder="Steroid eg. 2"><br>
                 <input class="form-input" type="text" name="antivirals" placeholder="Antivirals eg. 3"><br>
@@ -30,29 +30,28 @@
                 <input class="form-input" type="text" name="malaise" placeholder="Malaise eg. 2"><br>
                 <input class="form-input" type="text" name="anorexia" placeholder="Anorexia eg. 4"><br>
                 <input class="form-input" type="text" name="liver_big" placeholder="Liver_big eg. 4"><br>
-		<input class="form-input" type="text" name="liver_firm" placeholder="Liver_firm eg. 2"><br>
+		        <input class="form-input" type="text" name="liver_firm" placeholder="Liver_firm eg. 2"><br>
                 <input class="form-input" type="text" name="spleen_palpable" placeholder="Spleen_palpable eg. 3"><br>
                 <input class="form-input" type="text" name="spiders" placeholder="Spiders eg. 2"><br>
                 <input class="form-input" type="text" name="ascites" placeholder="Ascites eg. 2"><br>
                 <input class="form-input" type="text" name="varices" placeholder="Varices eg. 2"><br>
                 <input class="form-input" type="text" name="bilirubin" placeholder="Bilirubin eg. 0.50"><br>
-		<input class="form-input" type="text" name="alk_phosphate" placeholder="Alk_phosphate eg. 90"><br>
+		        <input class="form-input" type="text" name="alk_phosphate" placeholder="Alk_phosphate eg. 90"><br>
                 <input class="form-input" type="text" name="sgot" placeholder="Sgot eg. 150"><br>
                 <input class="form-input" type="text" name="albumin" placeholder="Albumin eg. 3.2"><br>
                 <input class="form-input" type="text" name="protime" placeholder="Protime eg. 30"><br>
-		<input class="form-input" type="text" name="histology" placeholder="Histology eg. 2"><br								
-		<input type="submit" class="btn btn-primary">Predict</button>        	
-
+                <input class="form-input" type="text" name="histology" placeholder="Histology eg. 2"><br>								
+                <input type="submit" class="my-button" value="Predict">        	
         	</form>
     	</div>
 
         <!-- Footer -->
        <div class='footer'>
            <div class="contact_details">
-               <a target="_blank" href="https://github.com/SAB-6/Hepatitis-mortality-prediction"><i class="fab fa-github contact_icon"></i></a>
-               <a target="_blank" href="https://www.linkedin.com/in/shereefbankole/"><i class="fa fa-linkedin-square contact_icon"></i></a>
+               <a target="_blank" href="https://github.com/SAB-6/Hepatitis-mortality-prediction"><i class="fab fa-github contact-icon"></i></a>
+               <a target="_blank" href="https://www.linkedin.com/in/shereefbankole/"><i class="fa fa-linkedin-square contact-icon"></i></a>
            </div>
-           <p class='footer_description'>Authored by 💻 Shereef B.</p>
+           <p class='footer-description'> By 💻 Shereef B.</p>
        </div>
 
     </body>
